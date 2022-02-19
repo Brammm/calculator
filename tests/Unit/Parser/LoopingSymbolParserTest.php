@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Brammm\Calculator\Unit\Parser;
 
-use Brammm\Calculator\DataProvider;
 use Brammm\Calculator\Parser\LoopingSymbolParser;
 use PHPUnit\Framework\TestCase;
 
@@ -30,6 +29,11 @@ final class LoopingSymbolParserTest extends TestCase
      */
     public function expressionProvider(): array
     {
-        return DataProvider::parsedInfix();
+        return [
+            ['5 + 3', ['5', '+', '3']],
+            ['55 + 3', ['55', '+', '3']],
+            ['5 + 3.55', ['5', '+', '3.55']],
+            ['-5 + 3', ['-', '5', '+', '3']],
+        ];
     }
 }
