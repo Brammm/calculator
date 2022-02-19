@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -eux
+
+exec docker run -it --rm --name calculator-run --volume=$PWD:/usr/src/app calculator
