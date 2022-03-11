@@ -1,6 +1,7 @@
 FROM php:8.1.3-bullseye
 
-RUN apt update && apt install --no-install-recommends --no-install-suggests -y unzip
+RUN apt update && apt install --no-install-recommends --no-install-suggests -y unzip \
+  && docker-php-ext-install bcmath
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
       php -r "if (hash_file('sha384', 'composer-setup.php') === file_get_contents('https://composer.github.io/installer.sig')) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" && \
